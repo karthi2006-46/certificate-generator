@@ -1,0 +1,17 @@
+<header class="header">
+  <div class="header-content">
+    <div>
+      <h1 class="header-title">{{ title }}</h1>
+      <p class="header-subtitle">TVK Technologies - Institute Management Tool</p>
+    </div>
+    <nav>
+      <a routerLink="/" class="nav-link" [routerLinkActive]="'active'">Dashboard</a>
+      <a routerLink="/generate" class="nav-link" [routerLinkActive]="'active'">Generate Documents</a>
+      <a routerLink="/history" class="nav-link" [routerLinkActive]="'active'">Download History</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
