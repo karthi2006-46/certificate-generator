@@ -1,0 +1,71 @@
+.preview-dialog {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+
+  .dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e5e7eb;
+
+    h2 {
+      margin: 0;
+      color: #1f2937;
+      font-size: 20px;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #6b7280;
+
+      &:hover {
+        color: #1f2937;
+      }
+    }
+  }
+
+  .dialog-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+
+    .preview-container {
+      max-width: 900px;
+      margin: 0 auto;
+
+      .preview-content {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  .dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 20px;
+    border-top: 1px solid #e5e7eb;
+    background: #f9fafb;
+  }
+}
+
+@media print {
+  .dialog-header,
+  .dialog-footer {
+    display: none;
+  }
+
+  .preview-dialog {
+    background: transparent;
+  }
+}

@@ -1,0 +1,58 @@
+<div class="pdf-generator">
+  <div class="generator-header">
+    <h2>Generate Documents</h2>
+    <div class="document-selector">
+      <label>Select Document Type:</label>
+      <div class="radio-group">
+        <label class="radio-label">
+          <input type="radio" [(ngModel)]="documentType" value="offer-letter" />
+          Internship Offer Letter
+        </label>
+        <label class="radio-label">
+          <input type="radio" [(ngModel)]="documentType" value="certificate" />
+          Internship Completion Certificate
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-error">
+    <span class="icon">❌</span>
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="successMessage" class="alert alert-success">
+    <span class="icon">✅</span>
+    {{ successMessage }}
+  </div>
+
+  <app-upload-excel (studentsLoaded)="studentService.setStudents($event)"></app-upload-excel>
+
+  <div *ngIf="students.length > 0" class="generation-section">
+    <h3>Select Students to Generate Documents</h3>
+
+    <app-student-table [students]="students" #studentTable></app-student-table>
+
+    <div class="actions">
+      <button
+        (click)="generatePdf(student)"
+        *ngFor="let student of students"
+        class="btn btn-secondary"
+        [disabled]="isGenerating"
+        style="display: none"
+      >
+        Generate {{ student.fullName }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Hidden templates for PDF generation -->
+  <div style="display: none">
+    <div *ngFor="let student of students" [id]="'offer-letter-' + student.registration_Number">
+      <app-offer-letter-template [student]="student"></app-offer-letter-template>
+    </div>
+    <div *ngFor="let student of students" [id]="'certificate-' + student.registration_Number">
+      <app-completion-certificate-template [student]="student"></app-completion-certificate-template>
+    </div>
+  </div>
+</div>

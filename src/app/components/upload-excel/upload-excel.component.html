@@ -1,0 +1,58 @@
+<div class="upload-excel">
+  <div class="upload-container">
+    <h2>Upload Student Data</h2>
+    <p class="description">Upload an Excel file containing student records to generate certificates and offer letters.</p>
+
+    <div class="file-input-wrapper">
+      <input
+        type="file"
+        #fileInput
+        accept=".xlsx,.xls"
+        (change)="onFileSelected($event)"
+        class="file-input"
+        [disabled]="isLoading"
+      />
+      <label for="file-input" class="file-label">
+        <span class="icon">📁</span>
+        <span class="text">
+          {{ selectedFile ? selectedFile.name : 'Click to select or drag & drop Excel file' }}
+        </span>
+      </label>
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-error">
+      <span class="icon">❌</span>
+      {{ errorMessage }}
+    </div>
+
+    <div *ngIf="successMessage" class="alert alert-success">
+      <span class="icon">✅</span>
+      {{ successMessage }}
+    </div>
+
+    <button
+      (click)="uploadFile()"
+      [disabled]="!selectedFile || isLoading"
+      class="btn btn-primary upload-btn"
+    >
+      <span *ngIf="isLoading" class="spinner"></span>
+      {{ isLoading ? 'Processing...' : 'Upload & Process' }}
+    </button>
+
+    <div class="file-info">
+      <h4>Expected Excel Format:</h4>
+      <ul>
+        <li>firstName</li>
+        <li>lastName</li>
+        <li>registration_Number</li>
+        <li>college_Name</li>
+        <li>domain_Name</li>
+        <li>starting_Date</li>
+        <li>ending_Date</li>
+        <li>duration</li>
+        <li>mode</li>
+        <li>project_Title</li>
+      </ul>
+    </div>
+  </div>
+</div>

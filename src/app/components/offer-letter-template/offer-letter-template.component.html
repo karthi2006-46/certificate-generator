@@ -1,0 +1,81 @@
+<div class="offer-letter" *ngIf="student" #offerLetterContent>
+  <div class="offer-letter-container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-shape"></div>
+      <div class="header-content">
+        <img [src]="settings.logoUrl" alt="TVK Logo" class="logo" />
+        <h1>INTERNSHIP OFFER LETTER</h1>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+      <div class="date-section">
+        <p><strong>Date:</strong> {{ 'now' | date: 'fullDate' }}</p>
+      </div>
+
+      <div class="greeting">
+        <p>Dear <strong>{{ student.fullName }}</strong>,</p>
+      </div>
+
+      <div class="body">
+        <p>
+          We are pleased to offer you an internship opportunity at
+          <strong>TVK Technologies</strong> in the domain of
+          <strong>{{ student.domain_Name }}</strong>.
+        </p>
+
+        <div class="section">
+          <h3>Internship Details:</h3>
+          <ul>
+            <li><strong>Registration Number:</strong> {{ student.registration_Number }}</li>
+            <li><strong>College:</strong> {{ student.college_Name }}</li>
+            <li><strong>Domain:</strong> {{ student.domain_Name }}</li>
+            <li><strong>Start Date:</strong> {{ student.starting_Date }}</li>
+            <li><strong>End Date:</strong> {{ student.ending_Date }}</li>
+            <li><strong>Duration:</strong> {{ student.duration }}</li>
+            <li><strong>Mode:</strong> {{ student.mode }}</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>Terms and Conditions:</h3>
+          <ul>
+            <li>Maintain professional conduct throughout the internship period.</li>
+            <li>Ensure 90% attendance as per company policy.</li>
+            <li>Follow the company's code of conduct and security guidelines.</li>
+            <li>Complete assigned projects with dedication and excellence.</li>
+            <li>Maintain confidentiality of company information.</li>
+            <li>Report to your designated mentor/manager as scheduled.</li>
+          </ul>
+        </div>
+
+        <p class="closing">
+          We are confident that you will make excellent contributions to our team.
+          If you have any questions, please feel free to contact our HR department.
+        </p>
+
+        <p>Best regards,</p>
+      </div>
+
+      <!-- Signature Section -->
+      <div class="signature-section">
+        <div class="signature">
+          <img [src]="settings.ceoSignatureUrl" alt="CEO Signature" class="signature-image" />
+          <p class="signature-name">CEO<br />TVK Technologies</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-shape"></div>
+      <div class="footer-content">
+        <p>📞 {{ settings.footerPhone }}</p>
+        <p>🌐 {{ settings.footerWebsite }}</p>
+        <p>📧 {{ settings.footerEmail }}</p>
+      </div>
+    </div>
+  </div>
+</div>

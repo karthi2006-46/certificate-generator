@@ -1,0 +1,30 @@
+<div class="preview-dialog">
+  <div class="dialog-header">
+    <h2>Preview Document</h2>
+    <button mat-icon-button (click)="close()" class="close-btn">✕</button>
+  </div>
+
+  <div class="dialog-body">
+    <div class="preview-container">
+      <div [id]="documentType + '-preview-' + student.registration_Number" class="preview-content">
+        <app-offer-letter-template
+          *ngIf="documentType === 'offer-letter'"
+          [student]="student"
+        ></app-offer-letter-template>
+        <app-completion-certificate-template
+          *ngIf="documentType === 'certificate'"
+          [student]="student"
+        ></app-completion-certificate-template>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-footer">
+    <button (click)="close()" class="btn btn-outline">Close</button>
+    <button (click)="print()" class="btn btn-secondary">🖨️ Print</button>
+    <button (click)="downloadPdf()" [disabled]="isDownloading" class="btn btn-primary">
+      <span *ngIf="isDownloading" class="spinner"></span>
+      {{ isDownloading ? 'Downloading...' : '⬇️ Download PDF' }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="dashboard">
+  <div class="welcome-section">
+    <h2>Welcome to Certificate & Offer Letter Generator</h2>
+    <p>Manage and generate professional internship documents for TVK Technologies</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon students-icon">👥</div>
+      <div class="stat-content">
+        <h3>Total Students</h3>
+        <p class="stat-value">{{ totalStudents }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon cert-icon">📜</div>
+      <div class="stat-content">
+        <h3>Generated Certificates</h3>
+        <p class="stat-value">{{ generatedCertificates$ | async }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon offer-icon">📝</div>
+      <div class="stat-content">
+        <h3>Generated Offer Letters</h3>
+        <p class="stat-value">{{ generatedOfferLetters$ | async }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon download-icon">⬇️</div>
+      <div class="stat-content">
+        <h3>Recent Downloads</h3>
+        <p class="stat-value">{{ recentDownloads.length }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-section">
+    <h3>Quick Actions</h3>
+    <div class="actions-grid">
+      <a routerLink="/generate" class="action-card">
+        <span class="action-icon">📤</span>
+        <h4>Upload Excel & Generate</h4>
+        <p>Import student data and generate certificates or offer letters</p>
+      </a>
+      <a routerLink="/history" class="action-card">
+        <span class="action-icon">📋</span>
+        <h4>View Download History</h4>
+        <p>Check all previously generated documents</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="recent-section">
+    <h3>Recent Downloads</h3>
+    <div *ngIf="recentDownloads.length > 0; else noDownloads" class="recent-table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Registration No</th>
+            <th>Document Type</th>
+            <th>Generated Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let download of recentDownloads">
+            <td>{{ download.studentName }}</td>
+            <td>{{ download.registrationNumber }}</td>
+            <td>
+              <span class="badge" [ngClass]="download.documentType === 'offer-letter' ? 'badge-primary' : 'badge-success'">
+                {{ getDocumentTypeLabel(download.documentType) }}
+              </span>
+            </td>
+            <td>{{ download.generatedDate | date: 'short' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noDownloads>
+      <div class="empty-state">
+        <p>No downloads yet. Start by uploading an Excel file and generating documents.</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

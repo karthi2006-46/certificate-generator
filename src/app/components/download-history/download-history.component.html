@@ -1,0 +1,80 @@
+<div class="download-history">
+  <div class="history-header">
+    <h2>Download History</h2>
+    <div class="header-actions">
+      <div class="search-box">
+        <input
+          type="text"
+          placeholder="Search history..."
+          [(ngModel)]="searchText"
+          (input)="applyFilter()"
+          class="form-input"
+        />
+      </div>
+      <button (click)="exportAsCSV()" class="btn btn-secondary" [disabled]="history.length === 0">
+        📥 Export as CSV
+      </button>
+      <button (click)="clearHistory()" class="btn btn-outline" [disabled]="history.length === 0">
+        🗑️ Clear All
+      </button>
+    </div>
+  </div>
+
+  <div class="history-stats">
+    <div class="stat">
+      <span class="label">Total Downloads:</span>
+      <span class="value">{{ history.length }}</span>
+    </div>
+    <div class="stat">
+      <span class="label">Certificates:</span>
+      <span class="value">{{ (history | async | keyvalue) ? 0 : 0 }}</span>
+    </div>
+    <div class="stat">
+      <span class="label">Offer Letters:</span>
+      <span class="value">{{ (history | async | keyvalue) ? 0 : 0 }}</span>
+    </div>
+  </div>
+
+  <div *ngIf="history.length > 0; else noHistory" class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Registration No</th>
+          <th>Document Type</th>
+          <th>Generated Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of filteredHistory">
+          <td>{{ record.studentName }}</td>
+          <td>{{ record.registrationNumber }}</td>
+          <td>
+            <span class="badge" [ngClass]="record.documentType === 'offer-letter' ? 'badge-primary' : 'badge-success'">
+              {{ getDocumentTypeLabel(record.documentType) }}
+            </span>
+          </td>
+          <td>{{ record.generatedDate | date: 'short' }}</td>
+          <td>
+            <button
+              (click)="deleteRecord(record.id)"
+              class="btn-icon"
+              title="Delete"
+            >
+              🗑️
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noHistory>
+    <div class="empty-state">
+      <p>📋 No download history yet.</p>
+      <p>Start generating documents to see them appear here.</p>
+      <a routerLink="/generate" class="btn btn-primary">Generate Documents</a>
+    </div>
+  </ng-template>
+</div>

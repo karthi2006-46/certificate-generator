@@ -1,0 +1,98 @@
+<div class="certificate" *ngIf="student" #certificateContent>
+  <div class="certificate-container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-shape"></div>
+      <div class="header-content">
+        <img [src]="settings.logoUrl" alt="TVK Logo" class="logo" />
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+      <div class="certificate-title">
+        <h1>CERTIFICATE OF COMPLETION</h1>
+        <p class="subtitle">Internship Program</p>
+      </div>
+
+      <div class="certificate-text">
+        <p class="intro">This is to certify that</p>
+        <p class="student-name">{{ student.fullName }}</p>
+        <p class="reg-number">(Registration No: {{ student.registration_Number }})</p>
+      </div>
+
+      <div class="achievement">
+        <p>
+          has successfully completed an Internship Program at
+          <strong>TVK Technologies</strong>
+        </p>
+        <p>
+          in the domain of <strong>{{ student.domain_Name }}</strong>
+        </p>
+      </div>
+
+      <div class="details">
+        <div class="detail-item">
+          <span class="label">College:</span>
+          <span class="value">{{ student.college_Name }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Internship Period:</span>
+          <span class="value">{{ student.starting_Date }} to {{ student.ending_Date }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Duration:</span>
+          <span class="value">{{ student.duration }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Mode:</span>
+          <span class="value">{{ student.mode }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Project Title:</span>
+          <span class="value">{{ student.project_Title }}</span>
+        </div>
+      </div>
+
+      <div class="appreciation">
+        <p>
+          The student has demonstrated exceptional commitment, technical skills, and
+          professional attitude throughout the internship period. We appreciate their
+          valuable contributions to our projects and wish them a successful career ahead.
+        </p>
+      </div>
+
+      <div class="certificate-number">
+        <p><strong>Certificate No: {{ certificateNumber }}</strong></p>
+      </div>
+
+      <!-- Signatures -->
+      <div class="signature-section">
+        <div class="signature">
+          <img [src]="settings.ceoSignatureUrl" alt="CEO Signature" class="signature-image" />
+          <p class="signature-name">CEO</p>
+          <p class="company-name">TVK Technologies</p>
+        </div>
+        <div class="signature">
+          <img [src]="settings.managerSignatureUrl" alt="Manager Signature" class="signature-image" />
+          <p class="signature-name">Internship Manager</p>
+          <p class="company-name">TVK Technologies</p>
+        </div>
+      </div>
+
+      <!-- QR Code -->
+      <div class="qr-code-section" *ngIf="qrCodeUrl">
+        <img [src]="qrCodeUrl" alt="Verification QR Code" class="qr-code" />
+        <p class="qr-text">Scan to verify certificate</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-shape"></div>
+      <div class="footer-content">
+        <p>📞 {{ settings.footerPhone }} | 🌐 {{ settings.footerWebsite }} | 📧 {{ settings.footerEmail }}</p>
+      </div>
+    </div>
+  </div>
+</div>
