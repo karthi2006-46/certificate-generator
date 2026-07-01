@@ -50,6 +50,17 @@ export class DownloadHistoryComponent implements OnInit {
   getDocumentTypeLabel(type: string): string {
     return type === 'offer-letter' ? 'Offer Letter' : 'Certificate';
   }
+  getCertificateCount(): number {
+  return this.history.filter(
+    item => item.documentType === 'certificate'
+  ).length;
+}
+
+getOfferLetterCount(): number {
+  return this.history.filter(
+    item => item.documentType === 'offer-letter'
+  ).length;
+}
 
   exportAsCSV(): void {
     const headers = ['Student Name', 'Registration Number', 'Document Type', 'Generated Date'];
@@ -72,5 +83,6 @@ export class DownloadHistoryComponent implements OnInit {
     link.download = `download_history_${new Date().getTime()}.csv`;
     link.click();
     window.URL.revokeObjectURL(url);
+    
   }
 }

@@ -31,7 +31,13 @@
   <div *ngIf="students.length > 0" class="generation-section">
     <h3>Select Students to Generate Documents</h3>
 
-    <app-student-table [students]="students" #studentTable></app-student-table>
+    <app-student-table
+  [students]="students"
+  (previewStudent)="openPreview($event)"
+  (generateStudent)="generatePdf($event)"
+  (downloadStudent)="generatePdf($event)"
+>
+</app-student-table>
 
     <div class="actions">
       <button

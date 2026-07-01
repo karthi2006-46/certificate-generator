@@ -8,9 +8,9 @@ export class CertificateService {
   private readonly STORAGE_KEY = 'certificateSettings';
 
   private defaultSettings: CertificateSettings = {
-    logoUrl: 'assets/images/tvk-logo.png',
-    ceoSignatureUrl: 'assets/images/ceo-signature.png',
-    managerSignatureUrl: 'assets/images/manager-signature.png',
+    logoUrl: 'assets/images/tvklogo.png',
+    ceoSignatureUrl: 'assets/images/ceo-signature.jpg',
+    managerSignatureUrl: 'assets/images/manager-signature.jpg',
     footerPhone: '+91 9123456789',
     footerWebsite: 'www.tvktechnologies.com',
     footerEmail: 'info@tvktechnologies.com',

@@ -21,19 +21,21 @@
   </div>
 
   <div class="history-stats">
-    <div class="stat">
-      <span class="label">Total Downloads:</span>
-      <span class="value">{{ history.length }}</span>
-    </div>
-    <div class="stat">
-      <span class="label">Certificates:</span>
-      <span class="value">{{ (history | async | keyvalue) ? 0 : 0 }}</span>
-    </div>
-    <div class="stat">
-      <span class="label">Offer Letters:</span>
-      <span class="value">{{ (history | async | keyvalue) ? 0 : 0 }}</span>
-    </div>
+  <div class="stat">
+    <span class="label">Total Downloads:</span>
+    <span class="value">{{ history.length }}</span>
   </div>
+
+  <div class="stat">
+    <span class="label">Certificates:</span>
+    <span class="value">{{ getCertificateCount() }}</span>
+  </div>
+
+  <div class="stat">
+    <span class="label">Offer Letters:</span>
+    <span class="value">{{ getOfferLetterCount() }}</span>
+  </div>
+</div>
 
   <div *ngIf="history.length > 0; else noHistory" class="table-container">
     <table class="table">

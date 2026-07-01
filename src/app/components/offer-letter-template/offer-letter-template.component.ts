@@ -16,4 +16,5 @@ export class OfferLetterTemplateComponent {
   constructor(private certificateService: CertificateService) {
     this.settings = this.certificateService.getSettings();
   }
+  today = new Date();
 }

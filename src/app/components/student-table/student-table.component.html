@@ -66,18 +66,32 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element">
-          <div class="actions">
-            <button class="btn-icon" title="Preview" matTooltip="Preview Student Details">
-              👁️
-            </button>
-            <button class="btn-icon" title="Generate" matTooltip="Generate Document">
-              📄
-            </button>
-            <button class="btn-icon" title="Download" matTooltip="Download PDF">
-              ⬇️
-            </button>
-          </div>
-        </td>
+  <div class="actions">
+    <button
+      class="btn-icon"
+      title="Preview"
+      (click)="preview(element)"
+    >
+      👁️
+    </button>
+
+    <button
+      class="btn-icon"
+      title="Generate"
+      (click)="generate(element)"
+    >
+      📄
+    </button>
+
+    <button
+      class="btn-icon"
+      title="Download"
+      (click)="download(element)"
+    >
+      ⬇️
+    </button>
+  </div>
+</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

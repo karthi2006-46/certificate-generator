@@ -4,14 +4,15 @@
     <p class="description">Upload an Excel file containing student records to generate certificates and offer letters.</p>
 
     <div class="file-input-wrapper">
-      <input
-        type="file"
-        #fileInput
-        accept=".xlsx,.xls"
-        (change)="onFileSelected($event)"
-        class="file-input"
-        [disabled]="isLoading"
-      />
+     <input
+  id="file-input"
+  type="file"
+  #fileInput
+  accept=".xlsx,.xls"
+  (change)="onFileSelected($event)"
+  class="file-input"
+  [disabled]="isLoading"
+/>
       <label for="file-input" class="file-label">
         <span class="icon">📁</span>
         <span class="text">

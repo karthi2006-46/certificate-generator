@@ -20,7 +20,7 @@ export class PdfGeneratorComponent implements OnInit {
   successMessage = '';
 
   constructor(
-    private studentService: StudentService,
+    public studentService: StudentService,
     private pdfService: PdfService,
     private historyService: HistoryService,
     private dialog: MatDialog

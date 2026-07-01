@@ -60,17 +60,17 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "certificate-generator:build:production"
-            },
-            "development": {
-              "buildTarget": "certificate-generator:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
+  "builder": "@angular-devkit/build-angular:dev-server",
+  "configurations": {
+    "production": {
+      "browserTarget": "certificate-generator:build:production"
+    },
+    "development": {
+      "browserTarget": "certificate-generator:build:development"
+    }
+  },
+  "defaultConfiguration": "development"
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -86,5 +86,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "b2b633cf-6bd1-46fa-8375-b2636d5d36f1"
   }
 }

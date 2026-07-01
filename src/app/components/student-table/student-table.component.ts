@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Student } from '../../models/student.model';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-student-table',
@@ -13,6 +14,21 @@ export class StudentTableComponent implements OnInit {
   @Input() students: Student[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  @Output() previewStudent = new EventEmitter<Student>();
+@Output() generateStudent = new EventEmitter<Student>();
+@Output() downloadStudent = new EventEmitter<Student>();
+
+preview(student: Student): void {
+  this.previewStudent.emit(student);
+}
+
+generate(student: Student): void {
+  this.generateStudent.emit(student);
+}
+
+download(student: Student): void {
+  this.downloadStudent.emit(student);
+}
 
   displayedColumns: string[] = ['select', 'fullName', 'registration_Number', 'domain_Name', 'starting_Date', 'ending_Date', 'actions'];
   dataSource = new MatTableDataSource<Student>();
